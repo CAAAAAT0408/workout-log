@@ -10,4 +10,6 @@
   잠금 방식(PBKDF2 횟수·AES-GCM)이나 키 이름을 바꾸면 이미 쓰는 사람의 기록이 안 열리므로, 바꿀 때는 옛 형식을 읽어 옮기는 코드를 함께 넣는다.
   비밀번호나 기록을 서버로 보내는 코드는 넣지 않는다(서버 없음). v1.0 의 `wl1.device.db` 는 처음 등록하는 사람이 이어받는다.
 - **오프라인 사본**: `sw.js` 는 페이지 파일을 인터넷이 되면 새로 받아 바꿔 둔다. 아이콘·manifest 를 바꿨으면 `sw.js` 의 `CACHE` 이름 끝 숫자를 올린다.
+- **배포**: `main` 에 push 하면 `.github/workflows/pages.yml` 이 GitHub Pages 로 내보낸다(Settings → Pages 의 Source = GitHub Actions).
+  이 파일을 지우거나 Source 를 바꾸면 사이트가 갱신되지 않으니 함께 맞춘다. 문서·워크플로만 바꾼 커밋은 버전을 올리지 않는다.
 - 개인 기록 파일(백업 .json, 받은 .xlsx)은 저장소에 올리지 않는다(`.gitignore`).

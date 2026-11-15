@@ -25,11 +25,12 @@
 - 아이폰·아이패드는 공유 버튼의 **홈 화면에 추가**로 설치해 쓰는 것이 안전합니다. 사파리 탭으로만 쓰면 7일 넘게 열지 않았을 때 사파리가 저장분을 지울 수 있습니다.
 - v1.0(사람 구분 전)에 이 기기에 쌓인 기록은 처음 등록하는 이름이 이어받습니다.
 
-## 처음 한 번: GitHub 에 올리기
-1. GitHub(CAAAAAT0408 계정)에서 **New repository** → 이름 `workout-log` (Public) 로 빈 저장소를 만든다.
-   (README·.gitignore 는 만들지 않는다. 이름을 다르게 하려면 `깃허브 올리기.bat` 과 이 문서의 주소도 같이 바꾼다.)
-2. 이 폴더의 `깃허브 올리기.bat` 을 실행한다.
-3. 저장소 Settings → Pages → Branch `main` / `(root)` 로 지정한다. 1~2분 뒤 https://caaaaat0408.github.io/workout-log/ 가 열린다.
+## GitHub 에 올리기 · 배포
+- 저장소 https://github.com/CAAAAAT0408/workout-log (Public) → 사이트 https://caaaaat0408.github.io/workout-log/
+- 저장소 Settings → Pages 의 Source 는 **GitHub Actions** 입니다. `main` 에 올리면 `.github/workflows/pages.yml` 이
+  저장소 내용을 그대로 사이트로 내보냅니다(1분쯤). 결과는 저장소 Actions 탭의 「Pages 배포」에서 봅니다.
+- PC 에서 고쳐 올릴 때는 이 폴더의 `깃허브 올리기.bat` 을 실행합니다(커밋 + push).
+- 다른 자동화 도구처럼 Branch `main` / `(root)` 방식으로 바꾸려면 Pages 의 Source 를 "Deploy from a branch" 로 바꾸고 워크플로 파일을 지웁니다.
 
 ## 버전과 수정 이력
 - 자동화 도구들과 같은 규칙(최초 1.0, 수정 1회 +0.1): `python bump_version.py workout "수정 내용"`
@@ -40,3 +41,4 @@
 - `sw.js`, `manifest.webmanifest`, `icon-*.png`, `apple-touch-icon.png` — 홈 화면 추가와 오프라인 사본
 - `version.json`, `bump_version.py` — 버전·수정 이력
 - `깃허브 올리기.bat` — 바뀐 파일을 커밋하고 올림
+- `.github/workflows/pages.yml` — main 에 올리면 사이트에 반영(배포)
