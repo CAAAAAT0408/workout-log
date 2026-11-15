@@ -4,7 +4,10 @@
   최초 버전 v1.0, 수정 1회 = +0.1 (1.0 → 1.1 → 1.2). 현재 버전·수정 이력은 `version.json` (페이지키 `workout`).
   올리는 법: `python bump_version.py workout "수정 내용"` (브라우저 탭 제목 `<title>` 과 머리글 `<h1>` 의 `_v1.N` 도 함께 바뀜).
   시험 스크립트·메모만 바꾼 커밋은 올리지 않는다. 올린 버전·이력은 같은 커밋에 넣는다.
-- **저장 방식**: `index.html` 의 `<meta name="wl-store" content="device">` 가 있어야 기록을 이 브라우저(localStorage `wl1.device.db`)에 저장한다.
+- **저장 방식**: `index.html` 의 `<meta name="wl-store" content="device">` 가 있어야 기록을 이 브라우저(localStorage)에 저장한다.
   이 줄을 지우면 Claude 아티팩트용 저장소를 찾다가 저장이 막히므로 지우지 않는다. 기록 모양(월 단위 문서)은 `index.html` 의 "저장소" 주석 참고.
+- **사람 구분**: 이름 + 비밀번호로 등록한 사람마다 기록 묶음을 따로 잠가 둔다(`wl2.people`, `wl2.db.<id>`, `wl2.sess` — `index.html` 의 "사람 구분" 주석).
+  잠금 방식(PBKDF2 횟수·AES-GCM)이나 키 이름을 바꾸면 이미 쓰는 사람의 기록이 안 열리므로, 바꿀 때는 옛 형식을 읽어 옮기는 코드를 함께 넣는다.
+  비밀번호나 기록을 서버로 보내는 코드는 넣지 않는다(서버 없음). v1.0 의 `wl1.device.db` 는 처음 등록하는 사람이 이어받는다.
 - **오프라인 사본**: `sw.js` 는 페이지 파일을 인터넷이 되면 새로 받아 바꿔 둔다. 아이콘·manifest 를 바꿨으면 `sw.js` 의 `CACHE` 이름 끝 숫자를 올린다.
 - 개인 기록 파일(백업 .json, 받은 .xlsx)은 저장소에 올리지 않는다(`.gitignore`).
